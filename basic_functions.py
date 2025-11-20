@@ -1,25 +1,55 @@
 
 
 def add(num1, num2):
-    pass  # Implement addition
+    return num1 + num2
 
 def subtract(num1, num2):
-    pass  # Implement subtraction
+    return num1 - num2
 
 def multiply(num1, num2):
-    pass  # Implement multiplication
+    return num1 * num2
 
 def divide(num1, num2):
-    pass  # Implement division with zero division check
+    return num1 / num2
 
 def fizz_buzz(number):
-    pass  # Implement FizzBuzz logic
+     if number % 5 == 0 and number % 3 == 0:
+        return "FizzBuzz"
+     elif number % 3 == 0:
+         return "Fizz"
+     elif number % 5 == 0:
+         return "Buzz"
+     else:
+         return number
+         
 
 def fibonacci(n):
-    pass  # Implement Fibonacci sequence logic
-        
+    fib= 0
+    num= 1
+    p_h= 0
+    f_h=0
+    for _ in range(n):
+        fib=num + p_h
+        p_h=fib
+    
+
+
+
 def triangle(n):
-    pass  # Implement triangle generation logic
+    tr_ls=[]
+    num=0
+    for i in range(1,n+1):
+        try:
+            p_h=('*'*i) + tr_ls[-1]
+        except IndexError:
+            tr_ls.append('*')
+        if num > 0:   
+            tr_ls.append(p_h)
+        num+=1
+
+    return tr_ls
+        
+
 
 def return_list_stats(numbers):
     """Given the list 'numbers', use the relevant functions to return a
@@ -42,7 +72,23 @@ def return_list_stats(numbers):
             number_of_odd_numbers : the total number of even numbers in the list
                  'numbers'
     """
-    pass
+    statics = {'unique_numbers': set(num for num in numbers),
+                'max': max(numbers),
+                'min': min(numbers),
+                'average':float(sum(numbers)/numbers),
+                'even_pairs': [(numbers[i], numbers[i+1]) for i in range(0, len(numbers)-1) if (numbers[i] + numbers[i+1]) % 2 == 0],
+                'odd_pairs': [(numbers[i], numbers[i+1]) for i in range(0, len(numbers)-1) if (numbers[i] + numbers[i+1]) % 3 == 0],
+                'even_numbers': (i for i in numbers if i % 2 == 0),
+                'odd_numbers' : (i for i in numbers if i % 3 == 0 or i == 1),
+                'number_of_even_numbers': sum([i for i in numbers if i % 2 == 0]),
+                'number_of_odd_numbers': sum([i for i in numbers if i % 3 == 0 or i == 1]),
+                }
+    # #odd_pairs
+    # for i in range(0, len(numbers)-1):
+    #     if (numbers[i] + numbers[i+1]) % 3 == 0:
+
+
+    return statics
 
 # TODO: (Bonus) Implement the pascal_triangle function below
 def pascal_triangle(n):
@@ -81,3 +127,6 @@ def pascal_triangle(n):
      * 1   5  10   10  5   1
     """
     pass
+
+#triangle(3)
+fibonacci(4)
